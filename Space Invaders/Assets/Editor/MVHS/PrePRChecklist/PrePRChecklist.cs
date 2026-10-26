@@ -533,8 +533,16 @@ namespace MVHS
                 }
             }
 
-            AssetDatabase.ExportPackage(toExport.ToArray(), savePath, ExportPackageOptions.Default);
-            Debug.Log($"[PrePRChecklist] Exported {toExport.Count} binary asset(s) to {savePath}");
+            if (toExport.Count != 0)
+            {
+                AssetDatabase.ExportPackage(toExport.ToArray(), savePath, ExportPackageOptions.Default);
+                Debug.Log($"[PrePRChecklist] Exported {toExport.Count} binary asset(s) to {savePath}");
+            } 
+            else
+            {
+                Debug.Log("[PrePRChecklist] No binary assets to export");
+            }
+
         }
 
         private string SuggestPackageName()
