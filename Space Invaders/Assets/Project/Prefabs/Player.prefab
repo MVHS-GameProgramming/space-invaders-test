@@ -136,4 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d48fab58fbd1214bb962216007e6f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  m_Speed: 5
+  m_Accel: 9
+  m_Drag: 2.8
+  m_LeftScreenBounds: -2.45
+  m_RightScreenBounds: 2.45
