@@ -36,8 +36,12 @@ public class EnemyFire : MonoBehaviour
 
     private void FireProjectile()
     {
-        //Instantiate(m_ProjectilePrefab, m_FirePosition.position, Quaternion.identity);
-        Debug.Log("Enemy Fire");
+        GameObject projectile = Instantiate(m_ProjectilePrefab, m_FirePosition.position, Quaternion.identity);
+        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();
+        if (projectileMovement != null)
+        {
+            projectileMovement.MoveDirection = Vector2.down;
+        }
     }
 
 
