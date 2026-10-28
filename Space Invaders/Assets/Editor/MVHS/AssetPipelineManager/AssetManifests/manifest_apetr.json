@@ -1,10 +1,11 @@
 {
     "exportedBy": "apetr",
-    "exportDate": "2026-10-27T18:14:30",
+    "exportDate": "2026-10-27T19:19:29",
     "folders": [
         {
             "folderPath": "Assets/Project/Art/Sprites/",
             "files": [
+                "Assets/Project/Art/Sprites/PlayerProjectile.png",
                 "Assets/Project/Art/Sprites/PlayerShip.png"
             ]
         }
