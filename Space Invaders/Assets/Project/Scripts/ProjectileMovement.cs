@@ -10,6 +10,8 @@ public class ProjectileMovement : MonoBehaviour
 
     private float m_LifeTime;
 
+    public Vector2 MoveDirection { get; set; } = Vector2.up;
+
     private void Start()
     {
         m_LifeTime = m_LifeSpan;
@@ -18,7 +20,7 @@ public class ProjectileMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * m_Speed *  Time.deltaTime);
+        transform.Translate(MoveDirection * m_Speed *  Time.deltaTime);
         m_LifeTime -= Time.deltaTime;
         if (m_LifeTime < 0 )
         {

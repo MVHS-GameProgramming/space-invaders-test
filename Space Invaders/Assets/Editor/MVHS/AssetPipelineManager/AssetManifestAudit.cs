@@ -8,7 +8,7 @@ using UnityEngine;
 namespace MVHS
 {
     /// <summary>
-    /// Read-only instructor tool that shows every file recorded across all
+    /// Read-only tool that shows every file recorded across all
     /// manifests, whether it exists on disk, and whether any scene or prefab
     /// in the project actually references it.
     ///
@@ -82,7 +82,7 @@ namespace MVHS
         private void DrawHeader()
         {
             EditorGUILayout.Space(5);
-            EditorGUILayout.LabelField("Manifest Audit  —  Instructor Tool", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Manifest Audit", EditorStyles.boldLabel);
             EditorGUILayout.HelpBox(
                 "Read-only. Shows every file recorded in any manifest, whether it exists on disk, " +
                 "and whether any scene or prefab in the project references it.\n\n" +
