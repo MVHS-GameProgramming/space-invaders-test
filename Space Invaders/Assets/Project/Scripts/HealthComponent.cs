@@ -14,8 +14,6 @@ public class HealthComponent : MonoBehaviour
     public bool IsDead { get; private set; }
 
 
-    Action<float, bool> OnHealthChange;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,8 +29,8 @@ public class HealthComponent : MonoBehaviour
         {
             CurrentHealth = 0f;
             IsDead = true;
+            Destroy(gameObject);
         }
-        OnHealthChange?.Invoke(CurrentHealth, IsDead);
     }
 
 
