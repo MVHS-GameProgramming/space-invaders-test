@@ -217,3 +217,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollisionHandeling
   m_DamageAmount: 40
+  m_ImpactParticles: {fileID: 755485485567741393, guid: a822d66292e214b49a1a74da4fcc6876, type: 3}

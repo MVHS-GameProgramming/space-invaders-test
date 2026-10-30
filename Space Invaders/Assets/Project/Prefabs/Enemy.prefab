@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   m_MaxHealth: 100
   m_StartingHealth: 100
+  m_DieVFX: {fileID: 8191208585345238359, guid: 06f6908980a171d4cb18d1e78f3c86ad, type: 3}
 --- !u!70 &5761139637825757653
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -238,5 +239,5 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.71, y: 1}
+  m_Size: {x: 0.53, y: 0.64}
   m_Direction: 0

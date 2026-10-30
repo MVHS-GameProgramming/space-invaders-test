@@ -9,6 +9,9 @@ public class HealthComponent : MonoBehaviour
     [SerializeField]
     public float m_StartingHealth;
 
+    [SerializeField]
+    private GameObject m_DieVFX;
+
     public float CurrentHealth { get; private set; }
 
     public bool IsDead { get; private set; }
@@ -29,6 +32,7 @@ public class HealthComponent : MonoBehaviour
         {
             CurrentHealth = 0f;
             IsDead = true;
+            Instantiate(m_DieVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
