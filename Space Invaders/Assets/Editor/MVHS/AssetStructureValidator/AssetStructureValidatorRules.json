@@ -91,6 +91,16 @@
       "description": "Fonts go under Project/Art/Fonts/"
     },
     {
+      "extension": ".tiff",
+      "requiredFolder": "Art",
+      "description": "Fonts go under Project/Art/Fonts/"
+    },
+    {
+      "extension": ".tif",
+      "requiredFolder": "Art",
+      "description": "Fonts go under Project/Art/Fonts/"
+    },
+    {
       "extension": ".otf",
       "requiredFolder": "Art",
       "description": "Fonts go under Project/Art/Fonts/"

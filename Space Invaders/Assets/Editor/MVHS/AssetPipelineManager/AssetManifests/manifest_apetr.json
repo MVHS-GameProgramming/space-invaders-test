@@ -1,7 +1,13 @@
 {
     "exportedBy": "apetr",
-    "exportDate": "2026-11-01T19:20:40",
+    "exportDate": "2026-11-01T20:15:24",
     "folders": [
+        {
+            "folderPath": "Assets/Project/Art/Fonts/",
+            "files": [
+                "Assets/Project/Art/Fonts/LiberationSans.ttf"
+            ]
+        },
         {
             "folderPath": "Assets/Project/Art/Sprites/",
             "files": [

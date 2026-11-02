@@ -29,6 +29,7 @@ namespace MVHS
             "Assets/Project/Art/Sprites/",
             "Assets/Project/Art/Textures/",
             "Assets/Project/Art/VFX/",
+            "Assets/Project/Art/Fonts/",
 
             "Assets/Project/Audio/",
             "Assets/Project/Audio/Music/",
@@ -45,7 +46,7 @@ namespace MVHS
         public static string[] binaryExtensions =
         {
             ".png", ".jpg", ".jpeg", ".tga", ".psd", ".bmp", ".exr", ".hdr",
-            ".tiff", ".tif",
+            ".tiff", ".tif", ".ttf", ".otf",
             ".wav", ".mp3",
             ".ogg", ".aiff", ".aif",
             ".fbx", ".obj", ".blend", ".dae", ".3ds",
