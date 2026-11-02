@@ -25,14 +25,21 @@ public class HealthComponent : MonoBehaviour
     }
 
 
-    public void DealDamage(float amount)
+    public void DealDamage(GameObject damageDealer, float amount)
     {
+
         CurrentHealth -= amount;
+        Debug.Log($"{damageDealer} delt {amount} damage to {gameObject}");
         if (CurrentHealth < 0)
         {
             CurrentHealth = 0f;
             IsDead = true;
-            Instantiate(m_DieVFX, transform.position, Quaternion.identity);
+
+            if (m_DieVFX != null)
+            {
+                Instantiate(m_DieVFX, transform.position, Quaternion.identity);
+            }
+            
             Destroy(gameObject);
         }
     }

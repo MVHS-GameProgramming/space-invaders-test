@@ -101,9 +101,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7528557423944311821}
   - component: {fileID: 6714838429896415593}
+  - component: {fileID: 2589524795940481931}
   - component: {fileID: 7872361698028450833}
   - component: {fileID: 1369928687611259955}
-  - component: {fileID: 2589524795940481931}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -141,6 +141,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileMovement
   m_LifeSpan: 1
   m_Speed: 10
+--- !u!114 &2589524795940481931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7471844317638222486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7531ebe1eea0ffc49a5aae3521b29a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollisionHandeling
+  m_DamageAmount: 40
+  m_ImpactParticles: {fileID: 755485485567741393, guid: a822d66292e214b49a1a74da4fcc6876, type: 3}
 --- !u!50 &7872361698028450833
 Rigidbody2D:
   serializedVersion: 5
@@ -204,17 +218,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.17
---- !u!114 &2589524795940481931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471844317638222486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7531ebe1eea0ffc49a5aae3521b29a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollisionHandeling
-  m_DamageAmount: 40
-  m_ImpactParticles: {fileID: 755485485567741393, guid: a822d66292e214b49a1a74da4fcc6876, type: 3}
