@@ -16,8 +16,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float m_SpawnWidthSpan = 1;
 
-
-
     private float m_TimeTillNextSpawn;
 
 

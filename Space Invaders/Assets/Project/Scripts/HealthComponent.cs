@@ -16,6 +16,8 @@ public class HealthComponent : MonoBehaviour
 
     public bool IsDead { get; private set; }
 
+    public static Action<HealthComponent> OnDied;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +36,7 @@ public class HealthComponent : MonoBehaviour
         {
             CurrentHealth = 0f;
             IsDead = true;
+            OnDied?.Invoke(this);
 
             if (m_DieVFX != null)
             {
