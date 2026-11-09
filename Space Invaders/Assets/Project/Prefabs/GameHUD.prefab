@@ -699,7 +699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d40c9619c03b86439a435ec4014afc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameHUD
-  m_ScoreTextNumber: {fileID: 0}
+  m_ScoreTextNumber: {fileID: 8011749932688894594}
+  m_HealthSlider: {fileID: 7543157126055264581}
+  m_Player: {fileID: 0}
 --- !u!1 &8727733439931766079
 GameObject:
   m_ObjectHideFlags: 0
