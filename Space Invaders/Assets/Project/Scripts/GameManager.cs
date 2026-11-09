@@ -17,11 +17,21 @@ public class GameManager : MonoBehaviour
     private MainMenu m_MainMenu;
 
     [SerializeField]
+    private GameObject m_GameHUD;
+
+    [SerializeField]
+    private GameOverMenu m_GameOverMenu;
+
+    [SerializeField]
     private GameObject m_Player;
+
+    [SerializeField]
+    private Transform m_PlayerSpawnPoint;
 
     public float Score { get; private set; }
 
     public static Action<float> OnScoreChange;
+    public static Action<GameState> OnGameStateChange;
 
     public GameState CurrentGameState { get; private set; }
 
@@ -34,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         HealthComponent.OnDied += HandleOnDied;
         m_MainMenu.PlayButtonButtonClicked += HandleOnMainMenuPlayButtonClicked;
+        m_GameOverMenu.MainMenuButtonClicked += HandleOnGameOverMenuMainMenuButtonClicked;
+
     }
 
     // Update is called once per frame
@@ -49,6 +61,13 @@ public class GameManager : MonoBehaviour
         {
             Score += m_PointsPerKill;
             OnScoreChange?.Invoke(Score);
+            return;
+        }
+
+        bool isPlayer = healthComponent.gameObject.CompareTag("Player");
+        if (isPlayer)
+        {
+            SetGameState(GameState.GameOver);
         }
     }
 
@@ -61,10 +80,16 @@ public class GameManager : MonoBehaviour
             m_EnemySpawner.enabled = true;
             m_Player.SetActive(true);
             m_MainMenu.gameObject.SetActive(false);
+            m_GameHUD.SetActive(true);
+            Instantiate(m_Player, m_PlayerSpawnPoint.position, Quaternion.identity);
         } 
         else if (gameState == GameState.GameOver)
         {
-
+            CurrentGameState = GameState.GameOver;
+            m_EnemySpawner.enabled = false;
+            m_Player.SetActive(false);
+            m_GameHUD.SetActive(false);
+            m_GameOverMenu.gameObject.SetActive(true);
         }
         else if (gameState == GameState.MainMenu)
         {
@@ -72,14 +97,23 @@ public class GameManager : MonoBehaviour
             m_EnemySpawner.enabled = false;
             m_Player.SetActive(false);
             m_MainMenu.gameObject.SetActive(true);
+            m_GameHUD.SetActive(false);
+            m_GameOverMenu.gameObject.SetActive(false);
 
         }
+
+        OnGameStateChange?.Invoke(CurrentGameState);
     }
 
 
     public void HandleOnMainMenuPlayButtonClicked()
     {
         SetGameState(GameState.InGame);
+    }
+
+    public void HandleOnGameOverMenuMainMenuButtonClicked()
+    {
+        SetGameState(GameState.MainMenu);
     }
 
     public void OnDestroy()
