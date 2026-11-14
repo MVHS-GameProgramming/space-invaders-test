@@ -16,10 +16,16 @@ public class MainMenu : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
         m_PlayButton.onClick.AddListener(OnPlayButtonClicked);
         m_QuitButton.onClick.AddListener(OnQuitButtonClicked);
+    }
+
+    private void OnDisable()
+    {
+        m_PlayButton.onClick.RemoveAllListeners();
+        m_QuitButton.onClick.RemoveAllListeners();
     }
 
     private void OnPlayButtonClicked()
@@ -30,12 +36,6 @@ public class MainMenu : MonoBehaviour
     private void OnQuitButtonClicked()
     {
         QuitButtonButtonClicked?.Invoke();
-    }
-
-    private void OnDestroy()
-    {
-        m_PlayButton.onClick.RemoveAllListeners();
-        m_QuitButton.onClick.RemoveAllListeners();
     }
 
 }

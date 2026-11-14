@@ -18,6 +18,26 @@ public class EnemySpawner : MonoBehaviour
 
     private float m_TimeTillNextSpawn;
 
+    public float MinSpawnInterval
+    {
+        get { return m_MinSpawnInterval; }
+        set
+        {
+            if (value < MaxSpawnInterval)
+                m_MinSpawnInterval = value;
+        }
+    }
+
+    public float MaxSpawnInterval
+    {
+        get { return m_MaxSpawnInterval; }
+        set
+        {
+            if (value > MinSpawnInterval)
+                m_MaxSpawnInterval = value;
+        }
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

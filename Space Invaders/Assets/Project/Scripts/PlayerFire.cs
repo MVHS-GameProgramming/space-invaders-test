@@ -16,4 +16,5 @@ public class PlayerFire : MonoBehaviour
             Instantiate(m_ProjectilePrefab, m_FirePosition.position, Quaternion.identity);
         }
     }
+
 }

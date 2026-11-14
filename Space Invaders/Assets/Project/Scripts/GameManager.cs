@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int m_PointsPerKill = 10;
 
+
     [SerializeField]
     private EnemySpawner m_EnemySpawner;
 
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     private MainMenu m_MainMenu;
 
     [SerializeField]
-    private GameObject m_GameHUD;
+    private GameHUD m_GameHUD;
 
     [SerializeField]
     private GameOverMenu m_GameOverMenu;
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public GameState CurrentGameState { get; private set; }
 
+    private float m_GameTime = 0f;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,7 +54,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"Score: {Score}");
+        if (CurrentGameState == GameState.InGame)
+        {
+            m_GameTime += Time.deltaTime;
+            SetEnemySpawnRate();
+        }
+        
+    }
+
+    public void SetEnemySpawnRate()
+    {
+        if (Time.time < 15f)
+        {
+            m_EnemySpawner.MinSpawnInterval = 0.9f;
+            m_EnemySpawner.MaxSpawnInterval = 2f;
+        }
+        else if (Time.time < 35)
+        {
+            m_EnemySpawner.MinSpawnInterval = 0.6f;
+            m_EnemySpawner.MaxSpawnInterval = 1.5f;
+        }
+        else if (Time.time < 60)
+        {
+            m_EnemySpawner.MinSpawnInterval = 0.3f;
+            m_EnemySpawner.MaxSpawnInterval = 0.9f;
+        }
     }
 
     public void HandleOnDied(HealthComponent healthComponent)
@@ -76,28 +103,29 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == GameState.InGame)
         {
+            m_GameTime = 0f;
             CurrentGameState = GameState.InGame;
             m_EnemySpawner.enabled = true;
-            m_Player.SetActive(true);
             m_MainMenu.gameObject.SetActive(false);
-            m_GameHUD.SetActive(true);
-            Instantiate(m_Player, m_PlayerSpawnPoint.position, Quaternion.identity);
+            m_GameHUD.gameObject.SetActive(true);
+
+            GameObject player = Instantiate(m_Player, m_PlayerSpawnPoint.position, Quaternion.identity);
+            if (player != null)
+                m_GameHUD.Init(player);
         } 
         else if (gameState == GameState.GameOver)
         {
             CurrentGameState = GameState.GameOver;
             m_EnemySpawner.enabled = false;
-            m_Player.SetActive(false);
-            m_GameHUD.SetActive(false);
+            m_GameHUD.gameObject.SetActive(false);
             m_GameOverMenu.gameObject.SetActive(true);
         }
         else if (gameState == GameState.MainMenu)
         {
             CurrentGameState = GameState.MainMenu;
             m_EnemySpawner.enabled = false;
-            m_Player.SetActive(false);
             m_MainMenu.gameObject.SetActive(true);
-            m_GameHUD.SetActive(false);
+            m_GameHUD.gameObject.SetActive(false);
             m_GameOverMenu.gameObject.SetActive(false);
 
         }
