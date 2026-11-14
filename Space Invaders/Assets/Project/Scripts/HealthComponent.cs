@@ -4,18 +4,28 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField]
-    public float m_MaxHealth;
+    private float m_MaxHealth;
 
     [SerializeField]
-    public float m_StartingHealth;
+    private float m_StartingHealth;
 
     [SerializeField]
     private GameObject m_DieVFX;
 
     public float CurrentHealth { get; private set; }
+    public float MaxHealth {  get { return m_MaxHealth; } }
 
     public bool IsDead { get; private set; }
 
+    public static event Action<HealthComponent> OnDied;
+
+    public event Action<float, float> OnHealthChange;
+
+    private void Awake()
+    {
+        CurrentHealth = m_StartingHealth;
+        IsDead = CurrentHealth <= 0f;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,11 +39,13 @@ public class HealthComponent : MonoBehaviour
     {
 
         CurrentHealth -= amount;
-        Debug.Log($"{damageDealer} delt {amount} damage to {gameObject}");
-        if (CurrentHealth < 0)
+        CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0f, m_StartingHealth);
+        OnHealthChange?.Invoke(CurrentHealth, m_MaxHealth);
+
+        if (CurrentHealth <= 0)
         {
-            CurrentHealth = 0f;
             IsDead = true;
+            OnDied?.Invoke(this);
 
             if (m_DieVFX != null)
             {

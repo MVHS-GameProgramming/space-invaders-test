@@ -1,6 +1,6 @@
 {
     "exportedBy": "apetr",
-    "exportDate": "2026-11-01T20:15:24",
+    "exportDate": "2026-11-14T07:30:45",
     "folders": [
         {
             "folderPath": "Assets/Project/Art/Fonts/",
@@ -15,6 +15,18 @@
                 "Assets/Project/Art/Sprites/EnemyShip.png",
                 "Assets/Project/Art/Sprites/PlayerProjectile.png",
                 "Assets/Project/Art/Sprites/PlayerShip.png"
+            ]
+        },
+        {
+            "folderPath": "Assets/Project/Art/Textures/",
+            "files": [
+                "Assets/Project/Art/Textures/Nebula Blue.png"
+            ]
+        },
+        {
+            "folderPath": "Assets/Project/Audio/SFX/",
+            "files": [
+                "Assets/Project/Audio/SFX/light_blast_2.wav"
             ]
         }
     ]
